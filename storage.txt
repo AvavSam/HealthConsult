@@ -1,0 +1,42 @@
+char namaObat;
+    int harga1, harga2, harga3, harga4, harga5;
+
+    cout << "DAFTAR OBAT" << endl;
+    cout << "OBAT" << endl;
+    cout << "1. Paracetamol Rp8000" << endl;
+    cout << "2. Amoxicillin Rp7000" << endl;
+    cout << "3. vitamin C Rp5000" << endl;
+    cout << "4. Antibiotik Rp30000" << endl;
+    cout << "5. Cefila Rp42000" << endl;
+
+    cout << "silahkan inputkan nomor daftar obat" << endl;
+    cin >> namaObat;
+
+    switch (namaObat)
+    {
+    case '1':
+        cout << "Anda membeli obat paracetamol" << endl;
+        harga1 = 8000;
+        break;
+    case '2':
+        cout << "Anda membeli obat Amoxicillin" << endl;
+        harga2 = 7000;
+        break;
+    case '3':
+        cout << "Anda membeli obat vitamin c" << endl;
+        harga3 = 5000;
+        break;
+    case '4':
+        cout << "Anda membeli obat Antibiotik" << endl;
+        harga4 = 30000;
+        break;
+    case '5':
+        cout << "Anda membeli obat cafila" << endl;
+        harga5 = 42000;
+        break;
+
+    defaut:
+        cout << "tidak ada didaftar obat" << endl;
+    }
+    cout << "===========================" << endl;
+    cout << "total harga yang harus dibayar adalah: Rp" << harga1 + harga2 + harga3 + harga4 + harga5 << endl;
