@@ -4,8 +4,8 @@ using namespace std;
 
 void garis();
 int utama();
-int obat();
 int tentang_kami();
+int obat();
 int konsultasi();
 int riwayat_periksa();
 int logout();
@@ -88,7 +88,7 @@ int utama()
         break;
     case '5':
         logout();
-        return 0;
+        break;
     default:
         cout << "Maaf, Input tidak Valid!" << endl;
         garis();
@@ -96,11 +96,13 @@ int utama()
     }
 }
 
-int tentang_kami()
+int tentang_kami() //Done
 {
     char pilihan;
-    cout << "tentang kami" << endl;
-    cout << "lorem ipsum" << endl;
+    cout << "Tentang Kami" << endl;
+    cout << "Kelompok 10: Tema Kesehatan\nAvav Abdillah Sam\nMuhammad Alfaraby Moidady\nFransisca Aprilia Tarabu\nNatasya Labaso\nAmirul Maulana" << endl;
+    garis();
+    cout << "HealthConsult++ merupakan program kesehatan sederhana menggunakan Bahasa pemrograman C++. Program ini dibuat agar mempermudah pasien untuk mendapatkan dan juga mencari saran medis dengan cepat dan juga mudah. Terdapat banyak fitur dalam program ini, mulai dari pendaftaran akun, pencarian dan informasi tentang obat-obatan, pencarian dokter spesialis, dan juga terdapat fitur pemesanan untuk konsultasi kepada dokter, dan tagihan pengguna juga langsung dapat terlihat." << endl;
     garis();
     cout << "Daftar Menu :" << endl;
     cout << "[1] Kembali" << endl;
@@ -120,24 +122,99 @@ int tentang_kami()
 
 int obat()
 {
-    return 0;
-}
-int konsultasi()
-{
-    return 0;
-}
-int riwayat_periksa()
-{
-    return 0;
+    char pilihan;
+    int harga1, harga2, harga3, harga4, harga5;
+    cout << "Daftar Obat" << endl;
+    garis();
+    cout << "[1] Paracetamol \t\tRp8000" << endl;
+    cout << "[2] Amoxicillin \t\tRp7000" << endl;
+    cout << "[3] vitamin C \t\tRp5000" << endl;
+    cout << "[4] Antibiotik \t\tRp30000" << endl;
+    cout << "[5] Cefila \t\tRp42000" << endl;
+    cout << "[6] Kembali" << endl;
+    garis();
+    cout << "Daftar Menu :" << endl;
+    cout << "Pilih Menu yang anda ingin tuju : ";
+    cin >> pilihan;
+    switch (pilihan)
+    {
+    case '1':
+        cout << "Anda membeli obat paracetamol" << endl;
+        harga1 = 8000;
+        break;
+    case '2':
+        cout << "Anda membeli obat Amoxicillin" << endl;
+        harga2 = 7000;
+        break;
+    case '3':
+        cout << "Anda membeli obat vitamin c" << endl;
+        harga3 = 5000;
+        break;
+    case '4':
+        cout << "Anda membeli obat Antibiotik" << endl;
+        harga4 = 30000;
+        break;
+    case '5':
+        cout << "Anda membeli obat cafila" << endl;
+        harga5 = 42000;
+        break;
+    case '6':
+        utama();
+        break;
+    default:
+        cout << "Maaf, Input tidak Valid!" << endl;
+        garis();
+        obat();
+    }
 }
 
-int logout()
+int konsultasi()
+{
+    char pilihan;
+    garis();
+    cout << "Daftar Menu :" << endl;
+    cout << "[1] Kembali" << endl;
+    cout << "Pilih Menu yang anda ingin tuju : ";
+    cin >> pilihan;
+    switch (pilihan)
+    {
+    case '1':
+        utama();
+        break;
+    default:
+        cout << "Maaf, Input tidak Valid!" << endl;
+        garis();
+        konsultasi();
+    }
+}
+
+int riwayat_periksa()
+{
+    char pilihan;
+    garis();
+    cout << "Daftar Menu :" << endl;
+    cout << "[1] Kembali" << endl;
+    cout << "Pilih Menu yang anda ingin tuju : ";
+    cin >> pilihan;
+    switch (pilihan)
+    {
+    case '1':
+        utama();
+        break;
+    default:
+        cout << "Maaf, Input tidak Valid!" << endl;
+        garis();
+        riwayat_periksa();
+    }
+}
+
+int logout() // Done
 {
     cout << "Anda telah logout, Terimakasih telah menggunakan layanan kami" << endl;
     return 0;
 }
 
-void garis()
+void garis() // Done
 {
     cout << "---------------------------------------------------" << endl;
 }
