@@ -47,7 +47,6 @@ int login()
         cout << "Username dan Password yang Anda daftarkan adalah : " << endl;
         cout << "User ID = " << uid << endl;
         cout << "Password = " << pass << endl;
-        garis();
         utama();
     }
     else
@@ -120,43 +119,58 @@ int tentang_kami() //Done
     }
 }
 
-int obat()
+int obat() //Kurang cara pilih obat
 {
     char pilihan;
     int harga1, harga2, harga3, harga4, harga5;
     cout << "Daftar Obat" << endl;
     garis();
-    cout << "[1] Paracetamol \t\tRp8000" << endl;
-    cout << "[2] Amoxicillin \t\tRp7000" << endl;
-    cout << "[3] vitamin C \t\tRp5000" << endl;
-    cout << "[4] Antibiotik \t\tRp30000" << endl;
-    cout << "[5] Cefila \t\tRp42000" << endl;
+    cout << "[1] Paracetamol \tRp20000" << endl;
+    cout << "[2] Amoxillin \t\tRp45000" << endl;
+    cout << "[3] Cataflam \t\tRp10000" << endl;
+    cout << "[4] Aspirin \t\tRp25000" << endl;
+    cout << "[5] Antasida \t\tRp14000" << endl;
     cout << "[6] Kembali" << endl;
     garis();
-    cout << "Daftar Menu :" << endl;
     cout << "Pilih Menu yang anda ingin tuju : ";
     cin >> pilihan;
+    garis ();
     switch (pilihan)
     {
     case '1':
-        cout << "Anda membeli obat paracetamol" << endl;
-        harga1 = 8000;
+        cout << "Paracetamol 10 strip" << endl;
+        cout << "Paracetamol adalah obat untuk meredakan demam dan nyeri ringan hingga sedang, misalnya sakit kepala, nyeri haid, atau pegal-pegal" << endl;
+        cout << "Dosis \t= 3x1" << endl;
+        cout << "Harga \t= Rp20000" << endl;
+        harga1 = 20000;
         break;
     case '2':
-        cout << "Anda membeli obat Amoxicillin" << endl;
-        harga2 = 7000;
+        cout << "Amoxillin 10 strip" << endl;
+        cout << "" << endl;
+        cout << "Dosis \t= 3x1" << endl;
+        cout << "Harga \t= Rp45000" << endl;
+        harga2 = 45000;
         break;
     case '3':
-        cout << "Anda membeli obat vitamin c" << endl;
-        harga3 = 5000;
+        cout << "Cataflam 2 Blister" << endl;
+        cout << "" << endl;
+        cout << "Dosis \t= 3x1" << endl;
+        cout << "Harga \t= Rp10000" << endl;
+        harga3 = 10000;
         break;
     case '4':
-        cout << "Anda membeli obat Antibiotik" << endl;
-        harga4 = 30000;
+        cout << "Aspirin 3 Blister" << endl;
+        cout << "" << endl;
+        cout << "Dosis \t= 3x1" << endl;
+        cout << "Harga \t= Rp25000" << endl;
+        harga4 = 25000;
         break;
     case '5':
-        cout << "Anda membeli obat cafila" << endl;
-        harga5 = 42000;
+        cout << "Antasida 10 Strip" << endl;
+        cout << "" << endl;
+        cout << "Dosis \t= 3x1" << endl;
+        cout << "Harga \t= Rp14000" << endl;
+        harga5 = 14000;
         break;
     case '6':
         utama();
@@ -171,6 +185,7 @@ int obat()
 int konsultasi()
 {
     char pilihan;
+    cout << "Konsultasi Dokter" << endl;
     garis();
     cout << "Daftar Menu :" << endl;
     cout << "[1] Kembali" << endl;
@@ -191,6 +206,7 @@ int konsultasi()
 int riwayat_periksa()
 {
     char pilihan;
+    cout << "Riwayat Pemeriksaan" << endl;
     garis();
     cout << "Daftar Menu :" << endl;
     cout << "[1] Kembali" << endl;
