@@ -1,6 +1,14 @@
 #include <iostream>
+#include <string.h>
 
 using namespace std;
+
+struct RekamMedis
+{
+    string nama;
+    string penyakit;
+    string tanggal;
+};
 
 void garis();
 int utama();
@@ -8,11 +16,19 @@ int tentang_kami();
 int obat();
 int konsultasi();
 int riwayat_periksa();
+void menuTambahRiwayat(RekamMedis &rekamMedis);
+void menuCariRiwayat(RekamMedis rekamMedis);
+void menuUbahRiwayat(RekamMedis &rekamMedis);
+void menuHapusRiwayat(RekamMedis &rekamMedis);
+void menuTampilkanRiwayat(RekamMedis rekamMedis);
 int logout();
 
-int login()
+int login() // Tampilan login, DONE
 {
-    int uid, pass;
+    char idlogin[30] = "ilovedaspro";
+    char pwlogin[30] = "keren";
+    char uid[30];
+    char pass[30];
     char konfirmasi;
     cout << "Apakah anda telah memiliki akun? (y/n) = ";
     cin >> konfirmasi;
@@ -24,7 +40,7 @@ int login()
         cout << "Masukkan Password  \t: ";
         cin >> pass;
         garis();
-        if (uid == 1234 && pass == 1234)
+        if ((strcmp(idlogin, uid) == 0 && strcmp(pwlogin, pass) == 0))
         {
             utama();
         }
@@ -54,13 +70,14 @@ int login()
         cout << "Input tidak valid. Silahkan input lagi dengan benar." << endl;
         login();
     }
+    return 0;
 }
 
-int utama()
+int utama() // Menu utama, DONE
 {
     char pilihan;
     garis();
-    cout << "Selamat Datang ADMIN di HealthConsult++ by Kelompok X" << endl;
+    cout << "Selamat Datang di HealthConsult++ by Kelompok X" << endl;
     garis();
     cout << "Daftar Menu :" << endl;
     cout << "[1] Tentang Kami" << endl;
@@ -93,9 +110,10 @@ int utama()
         garis();
         utama();
     }
+    return 0;
 }
 
-int tentang_kami() //Done
+int tentang_kami() // Menu tentang kami, tambah penjelasan fitur fitur
 {
     char pilihan;
     cout << "Tentang Kami" << endl;
@@ -117,9 +135,10 @@ int tentang_kami() //Done
         garis();
         tentang_kami();
     }
+    return 0;
 }
 
-int obat() //Kurang cara pilih obat
+int obat() // Menu pemilihan obat, kurang cara beli obat yang dipilih
 {
     char pilihan;
     int harga1, harga2, harga3, harga4, harga5;
@@ -134,7 +153,7 @@ int obat() //Kurang cara pilih obat
     garis();
     cout << "Pilih Menu yang anda ingin tuju : ";
     cin >> pilihan;
-    garis ();
+    garis();
     switch (pilihan)
     {
     case '1':
@@ -180,9 +199,10 @@ int obat() //Kurang cara pilih obat
         garis();
         obat();
     }
+    return 0;
 }
 
-int konsultasi()
+int konsultasi() // Menu konsultasi dokter, belum sama sekali
 {
     char pilihan;
     cout << "Konsultasi Dokter" << endl;
@@ -201,36 +221,176 @@ int konsultasi()
         garis();
         konsultasi();
     }
+    return 0;
 }
 
-int riwayat_periksa()
+int riwayat_periksa() // Menu riwayat pemeriksaan, fix error do..while
 {
-    char pilihan;
-    cout << "Riwayat Pemeriksaan" << endl;
-    garis();
-    cout << "Daftar Menu :" << endl;
-    cout << "[1] Kembali" << endl;
-    cout << "Pilih Menu yang anda ingin tuju : ";
-    cin >> pilihan;
-    switch (pilihan)
+    char pilihanPeriksa;
+    RekamMedis rekamMedis;
+    while (true)
     {
-    case '1':
-        utama();
-        break;
-    default:
-        cout << "Maaf, Input tidak Valid!" << endl;
+        cout << "Riwayat Pemeriksaan" << endl;
         garis();
-        riwayat_periksa();
+        cout << "Daftar Menu :" << endl;
+        cout << "[1] Tambah Riwayat" << endl;
+        cout << "[2] Cari Riwayat" << endl;
+        cout << "[3] Ubah Riwayat" << endl;
+        cout << "[4] Hapus Riwayat" << endl;
+        cout << "[5] Tampilkan Riwayat" << endl;
+        cout << "[6] Kembali" << endl;
+        cout << "Pilih Menu yang anda ingin tuju : ";
+        cin >> pilihanPeriksa;
+
+        switch (pilihanPeriksa)
+        {
+        case '1':
+            menuTambahRiwayat(rekamMedis);
+            break;
+        case '2':
+            menuCariRiwayat(rekamMedis);
+            break;
+        case '3':
+            menuUbahRiwayat(rekamMedis);
+            break;
+        case '4':
+            menuHapusRiwayat(rekamMedis);
+            break;
+        case '5':
+            menuTampilkanRiwayat(rekamMedis);
+            break;
+        case '6':
+            utama();
+            return 0;
+        default:
+            cout << "Maaf, Input tidak Valid!" << endl;
+            garis();
+        }
+    }
+    return 0;
+}
+
+void menuTambahRiwayat(RekamMedis &rekamMedis)
+{
+    garis();
+    cout << "Nama Pasien \t\t: ";
+    cin.ignore();
+    getline(cin, rekamMedis.nama);
+    cout << "Penyakit \t\t: ";
+    getline(cin, rekamMedis.penyakit);
+    cout << "Tanggal Pemeriksaan\t: ";
+    getline(cin, rekamMedis.tanggal);
+    cout << "Riwayat berhasil ditambahkan.\n";
+    garis();
+}
+
+void menuCariRiwayat(RekamMedis rekamMedis)
+{
+    string namaCari;
+    garis();
+    cout << "Masukkan nama pasien yang dicari: ";
+    cin.ignore();
+    getline(cin, namaCari);
+
+    if (rekamMedis.nama == namaCari)
+    {
+        cout << "Nama Pasien: " << rekamMedis.nama << endl;
+        cout << "Penyakit: " << rekamMedis.penyakit << endl;
+        cout << "Tanggal Pemeriksaan: " << rekamMedis.tanggal << endl;
+    }
+    else
+    {
+        cout << "Pasien dengan nama '" << namaCari << "' tidak ditemukan.\n";
     }
 }
 
-int logout() // Done
+void menuUbahRiwayat(RekamMedis &rekamMedis)
+{
+    string namaCari;
+    garis();
+    cout << "Masukkan nama pasien yang ingin diubah: ";
+    cin.ignore();
+    getline(cin, namaCari);
+
+    if (rekamMedis.nama == namaCari)
+    {
+        cout << "1. Ubah Nama Pasien\n";
+        cout << "2. Ubah Penyakit\n";
+        cout << "3. Ubah Tanggal Pemeriksaan\n";
+        cout << "Pilih Opsi: ";
+        int pilihan;
+        cin >> pilihan;
+
+        switch (pilihan)
+        {
+        case 1:
+            cout << "Nama Baru: ";
+            cin.ignore();
+            getline(cin, rekamMedis.nama);
+            break;
+        case 2:
+            cout << "Penyakit Baru: ";
+            cin.ignore();
+            getline(cin, rekamMedis.penyakit);
+            break;
+        case 3:
+            cout << "Tanggal Pemeriksaan Baru: ";
+            cin.ignore();
+            getline(cin, rekamMedis.tanggal);
+            break;
+        default:
+            cout << "Pilihan tidak valid. Riwayat tetap tidak diubah.\n";
+        }
+    }
+    else
+    {
+        cout << "Pasien dengan nama '" << namaCari << "' tidak ditemukan.\n";
+    }
+}
+
+void menuHapusRiwayat(RekamMedis &rekamMedis)
+{
+    string namaCari;
+    garis();
+    cout << "Masukkan nama pasien yang ingin dihapus: ";
+    cin.ignore();
+    getline(cin, namaCari);
+
+    if (rekamMedis.nama == namaCari)
+    {
+        rekamMedis.nama = "";
+        rekamMedis.penyakit = "";
+        rekamMedis.tanggal = "";
+        cout << "Riwayat berhasil dihapus.\n";
+    }
+    else
+    {
+        cout << "Pasien dengan nama '" << namaCari << "' tidak ditemukan.\n";
+    }
+}
+
+void menuTampilkanRiwayat(RekamMedis rekamMedis)
+{
+    garis();
+    if (rekamMedis.nama == "")
+    {
+        cout << "Riwayat kosong.\n";
+    }
+    else
+    {
+        cout << "Nama Pasien: " << rekamMedis.nama << endl;
+        cout << "Penyakit: " << rekamMedis.penyakit << endl;
+        cout << "Tanggal Pemeriksaan: " << rekamMedis.tanggal << endl;
+    }
+}
+
+int logout() // Logout, DONE
 {
     cout << "Anda telah logout, Terimakasih telah menggunakan layanan kami" << endl;
     return 0;
 }
 
-void garis() // Done
+void garis() // Biar ada garis
 {
     cout << "---------------------------------------------------" << endl;
 }
