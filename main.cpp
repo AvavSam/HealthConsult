@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -35,7 +36,7 @@ void menuHapusRiwayat(RekamMedis &rekamMedis);
 void menuTampilkanRiwayat(RekamMedis rekamMedis);
 int logout();
 
-int login() // Tampilan login, DONE
+int login()
 {
     char idlogin[30] = "ilovedaspro";
     char pwlogin[30] = "keren";
@@ -53,6 +54,7 @@ int login() // Tampilan login, DONE
         cin >> pass;
         if ((strcmp(idlogin, uid) == 0 && strcmp(pwlogin, pass) == 0))
         {
+            system("CLS");
             utama();
         }
         else
@@ -70,6 +72,7 @@ int login() // Tampilan login, DONE
         cin >> uid;
         cout << "Masukkan Password  \t: ";
         cin >> pass;
+        system("CLS");
         garis();
         cout << "Username dan Password yang Anda daftarkan adalah : " << endl;
         cout << "User ID = " << uid << endl;
@@ -84,7 +87,7 @@ int login() // Tampilan login, DONE
     return 0;
 }
 
-int utama() // Menu utama, DONE
+int utama()
 {
     char pilihan;
     garis();
@@ -124,13 +127,22 @@ int utama() // Menu utama, DONE
     return 0;
 }
 
-int tentang_kami() // Menu tentang kami, tambah penjelasan fitur fitur
+int tentang_kami()
 {
     char pilihan;
     cout << "Tentang Kami" << endl;
+    garis();
     cout << "Kelompok 10: Tema Kesehatan\nAvav Abdillah Sam\nMuhammad Alfaraby Moidady\nFransisca Aprilia Tarabu\nNatasya Labaso\nAmirul Maulana" << endl;
     garis();
     cout << "HealthConsult++ merupakan program kesehatan sederhana menggunakan Bahasa pemrograman C++. Program ini dibuat agar mempermudah pasien untuk mendapatkan dan juga mencari saran medis dengan cepat dan juga mudah. Terdapat banyak fitur dalam program ini, mulai dari pendaftaran akun, pencarian dan informasi tentang obat-obatan, pencarian dokter spesialis, dan juga terdapat fitur pemesanan untuk konsultasi kepada dokter, dan tagihan pengguna juga langsung dapat terlihat." << endl;
+    garis();
+    cout << "Fitur Fitur Aplikasi:" << endl;
+    cout << "Menu Cek Obat" << endl;
+    cout << "Berfungsi untuk menampilkan daftar obat. Setelah memilih obat, akan diarahkan pada deskripsi obat yang berisi jumlah obat, penjelasan obat, dosis, dan harga." << endl;
+    cout << "Menu Konsultasi Dokter" << endl;
+    cout << "Berfungsi untuk melihat dan melakukan reservasi dokter. Anda dapat memilih dokter, waktu konsultasi, dan jenis pembayaran yang anda inginkan." << endl;
+    cout << "Menu Riwayat Pemeriksaan" << endl;
+    cout << "Berfungsi untuk menambah, mencari, merubah, menghapus, dan juga menampilkan riwayat yang ada." << endl;
     garis();
     cout << "Daftar Menu :" << endl;
     cout << "[1] Kembali" << endl;
@@ -139,6 +151,7 @@ int tentang_kami() // Menu tentang kami, tambah penjelasan fitur fitur
     switch (pilihan)
     {
     case '1':
+        system("CLS");
         utama();
         break;
     default:
@@ -149,7 +162,7 @@ int tentang_kami() // Menu tentang kami, tambah penjelasan fitur fitur
     return 0;
 }
 
-int obat() // Menu pemilihan obat, kurang cara beli obat yang dipilih
+int obat()
 {
     char pilihan;
     int harga1 = 0, harga2 = 0, harga3 = 0, harga4 = 0, harga5 = 0;
@@ -203,6 +216,7 @@ int obat() // Menu pemilihan obat, kurang cara beli obat yang dipilih
         harga5 = 14000;
         break;
     case '6':
+        system("CLS");
         utama();
         return 0;
     default:
@@ -217,7 +231,7 @@ int obat() // Menu pemilihan obat, kurang cara beli obat yang dipilih
     if ((beli == 'Y') || (beli == 'y'))
     {
         int jumlah;
-        cout << "Jumlah obat yang ingin dibeli:";
+        cout << "Jumlah obat yang ingin dibeli: ";
         cin >> jumlah;
         int totalHarga = 0;
 
@@ -266,7 +280,7 @@ int obat() // Menu pemilihan obat, kurang cara beli obat yang dipilih
     return 0;
 }
 
-int konsultasi() // Menu konsultasi dokter, DONE
+int konsultasi()
 {
     char pilihan;
     Reservasi reservasi[MAX_RESERVATIONS];
@@ -406,6 +420,7 @@ int konsultasi() // Menu konsultasi dokter, DONE
             }
             break;
         case '3':
+            system("CLS");
             utama();
             return 0;
         default:
@@ -417,7 +432,7 @@ int konsultasi() // Menu konsultasi dokter, DONE
     return 0;
 }
 
-int riwayat_periksa() // Menu riwayat pemeriksaan, FIXED DONE
+int riwayat_periksa()
 {
     char pilihanPeriksa;
     RekamMedis rekamMedis;
@@ -453,6 +468,7 @@ int riwayat_periksa() // Menu riwayat pemeriksaan, FIXED DONE
             menuTampilkanRiwayat(rekamMedis);
             break;
         case '6':
+            system("CLS");
             utama();
             return 0;
         default:
@@ -588,13 +604,13 @@ void menuTampilkanRiwayat(RekamMedis rekamMedis)
     }
 }
 
-int logout() // Logout, DONE
+int logout()
 {
     cout << "Anda telah logout, Terimakasih telah menggunakan layanan kami" << endl;
     return 0;
 }
 
-void garis() // Biar ada garis
+void garis()
 {
     cout << "---------------------------------------------------" << endl;
 }
